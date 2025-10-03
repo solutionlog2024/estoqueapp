@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌏 Página Inicial</title>
+        
+  </head>
+<body>
+        
+</body>
+<style>
+    body {
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        font-size: 20px;
+        font-family: Arial, sans-serif;
+        background-color: #0948c5;
+        margin: 0;
+        padding: 20px;
+        background: url('https://c5gwmsmjx1.execute-api.us-east-1.amazonaws.com/prod/dados_processo_seletivo/foto_header_mobile/175474/Sem%20t%C3%ADtulo%20-%20Copia.jpg')no-repeat top center fixed;
+    }
+    .btn-acessar
+    {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        align-items: left;
+    }
+    h1 {
+        color: #0948c5;
+        text-align: center;
+        margin-top: 20%;
+        font-size: 36px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        container: center;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+    }
+
+    hi:hover {
+        color: #ece929;
+        font-size: 40px;
+        text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
+        animation: alternate 1s infinite;
+        position: relative;
+        top: -5px;
+
+    }
+
+    .img-container {
+        margin-bottom: 20px;
+        text-align: center;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 28px;
+            margin-top: 30%;
+           
+        }
+
+    }
+    .footer {
+        text-align: center;
+        padding: 10px;
+        background-color: #0948c5;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        box-shadow: #0948c5 0px -2px 5px 0px inset;
+    }
+
+    .btn-acessar:hover {
+        background-color: #ffee00;
+        color: black;
+        font-size: 30px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        animation: alternate 1s infinite;
+    }
+
+    footer {
+        text-align: center;
+        padding: 10px;
+        background-color: #0948c5;
+        color: white;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        box-shadow: #0948c5 0px -2px 5px 0px inset;
+        font-size: 14px;
+    }
+
+</style>
+
+    <main>
+        
+        <div class="container"
+                style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+    <div class="img-container" style="text-align: center;">
+            <button class="btn-acessar" onclick="window.location.href='/login'">Acessar Sistema</button>
+        </div>
+        <h1>Gerenciador de Formularios Solution Logística</h1>
+    </div>
+    </main>
+    <footer>
+        &copy; 2025 Williams Rodrigues.Todos os direitos reservados.
+    </footer>
+</html>

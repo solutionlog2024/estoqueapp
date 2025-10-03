@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚚 Expedição Wilton (BINS)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Road+Rage&family=Metal+Mania&family=Montserrat:wght@400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+            font-size: 16px;
+            color: #222;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #02144e 0%, #064b91 100%);
+        }
+        .container {
+            max-width: 600px;
+            width: 98vw;
+            margin: 32px auto;
+            background: rgba(244, 244, 250, 0.993);
+            padding: 32px 16px 24px 16px;
+            border-radius: 14px;
+            box-shadow: 0 8px 32px rgba(17, 17, 43, 0.18);
+        }
+        header, h1 {
+            font-family: 'Montserrat', 'Metal Mania', cursive, sans-serif;
+            font-size: 1.4rem;
+            text-decoration: underline;
+            text-shadow: #050e1f 1px 1px 2px;
+            color: #05081d;
+            margin-bottom: 10px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        img {
+            display: block;
+            margin: 0 auto 18px auto;
+            width: 120px;
+            height: auto;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        label {
+            font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+            font-weight: 600;
+            font-size: 1.08rem;
+            color: #222;
+            margin-bottom: 4px;
+            text-align: left;
+            letter-spacing: 0.5px;
+        }
+        input[type="text"], input[type="number"], input[type="date"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #b5b6fa;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: 'Roboto', 'Montserrat', Arial, sans-serif;
+            background: #ffffff;
+            transition: border 0.2s;
+            box-sizing: border-box;
+        }
+        input[type="text"]:focus, input[type="number"]:focus, input[type="date"]:focus, textarea:focus {
+            border: 1.5px solid #3352ff;
+            outline: none;
+            background: #f7f7f8;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 60px;
+        }
+        .remove-bin-btn {
+            background: #ff4d4d;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 6px 10px;
+            font-size: 1rem;
+            font-family: 'Montserrat', Arial, sans-serif;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .remove-bin-btn:hover {
+            background: #d90000;
+        }
+        .btn.-btn-circle-add {
+            background: #231fe4;        
+            color: #fff;                
+            width: 40px;                
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;   
+            border: none;
+            border-radius: 50%;         
+            font-size: 1.2rem;          
+            font-weight: bold;
+            cursor: pointer;
+            margin: 0 5px;             
+            transition: all 0.3s ease;  
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+        .btn.-btn-circle-add:hover {
+            background: #ebd720;     
+            transform: scale(1.1);     
+        }
+        .btn-enviar {
+            background: linear-gradient(90deg, #4a5df0 60%, #386fdd 100%);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 22px;
+            font-size: 1.08rem;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(74,93,240,0.10);
+            transition: background 0.2s, transform 0.1s;
+        }
+        .btn-enviar:hover {
+            background: linear-gradient(90deg, #4e29f1 60%, hsl(231, 57%, 22%) 100%);
+            transform: translateY(-2px) scale(1.04);
+        }
+        .botoes-actions {
+            display: flex;
+            flex-direction: row;
+            gap: 14px;
+            justify-content: flex-end;
+            align-items: center;
+            margin-top: 16px;
+        }
+        .bins-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 16px;
+        }
+        .bins-table th, .bins-table td {
+            border: 1px solid #b5b6fa;
+            padding: 8px;
+            text-align: left;
+            font-size: 1rem;
+            vertical-align: middle;
+        }
+        .bins-table th {
+            background: #e7e9fa;
+            font-weight: 600;
+        }
+        .bins-table tbody tr td {
+            padding: 4px;
+        }
+        .bins-table input[type="text"], .bins-table input[type="number"] {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 8px;
+            font-size: 0.98rem;
+            border-radius: 4px;
+            border: 1px solid #b5b6fa;
+            margin: 0;
+        }
+        .bins-table input[type="text"]:focus, .bins-table input[type="number"]:focus {
+            border: 1.5px solid #3352ff;
+            outline: none;
+            background: #f7f7f8;
+        }
+        .bins-table td:nth-child(1) {
+            width: 60%;
+        }
+        .bins-table td:nth-child(2) {
+            width: 25%;
+        }
+        .bins-table td:nth-child(3) {
+            width: 15%;
+            text-align: center;
+        }
+        @media (max-width: 800px) {
+            .container {
+                max-width: 98vw;
+                padding: 18px 6vw 18px 6vw;
+            }
+            h1 {
+                font-size: 1.2rem;
+            }
+            .btn-enviar {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        @media (max-width: 500px) {
+            .container {
+                padding: 8px 2vw 8px 2vw;
+            }
+            img {
+                width: 80px;
+            }
+        }
+        @media print {
+            body {
+                background: #fff !important;
+            }
+            .container {
+                max-width: 100%;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                box-shadow: none;
+                border-radius: 0;
+            }
+            .botoes-actions, .btn.-btn-circle-add, .remove-bin-btn, footer, .card img {
+                display: none !important;
+            }
+            h1 {
+                font-size: 1.3rem;
+                color: #222 !important;
+                text-shadow: none;
+            }
+            label {
+                color: #222 !important;
+            }
+            input, textarea {
+                border: 1px solid #222 !important;
+                background: #fff !important;
+                color: #222 !important;
+                font-size: 1rem !important;
+            }
+            .bins-table th, .bins-table td {
+                border: 1px solid #222 !important;
+                padding: 6px 8px !important;
+            }
+            .bins-table input[type="text"], .bins-table input[type="number"] {
+                border: none !important;
+                background: transparent !important;
+                color: #222 !important;
+                font-size: 1rem !important;
+                padding: 0 !important;
+            }
+        }
+
+         .btn-voltar {
+            background-color: #97969b;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-left: 10px;
+            align-items: right;
+        }
+
+        .btn-voltar:hover {
+            background-color: #ebcb1a;  
+        }
+    </style>
+</head>
+<body>
+    <main>
+        
+        <div class ="menu-sidebar" type="button">
+                <button class="btn-voltar" type="button" onclick="window.location.href='/main'">Voltar</button>
+        </div>
+    </main>
+    <main>
+        <div class="container">
+            <div class="card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Dr._Oetker-Logo.svg" alt="Wilton Logo">
+                <h1>PRODUTOS PARA EXPEDIÇÃO WILTON</h1>
+                <form id="expedicaoForm">
+                    <div>
+                        <label for="nf">Digite o Número da NF:</label>
+                        <input type="text" id="nf" name="nf" required autocomplete="off">
+                    </div>
+                    <div>
+                        <label for="pedido">Digite o Número do Pedido:</label>
+                        <input type="text" id="pedido" name="pedido" required autocomplete="off">
+                    </div>
+                    <div>
+                        <label for="transportador">Digite a Transportadora:</label>
+                        <input type="text" id="transportador" name="transportador" required autocomplete="off">
+                    </div>
+                    <div>
+                        <label for="data_expedicao">Selecione a data da Expedição:</label>
+                        <input type="date" id="data_expedicao" name="data_expedicao" required>
+                    </div>
+                    <div>
+                        <label><strong>Códigos de BIN e Quantidades:</strong></label>
+                        <table id="bins-table" class="bins-table">
+                            <thead>
+                                <tr>
+                                    <th>Código do BIN</th>
+                                    <th>Quantidade</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input type="text" name="bins[0][codigo]" placeholder="Código do BIN" required>
+                                    </td>
+                                    <td>
+                                        <input type="number" name="bins[0][quantidade]" placeholder="Qtd" min="1" required>
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn -btn-circle-add" onclick="addBin()" title="Adicionar BIN">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div style="margin: 18px 0 0 0;">
+                        <label for="observations"><strong>Observações:</strong></label>
+                        <textarea id="observations" name="observations" rows="3" placeholder="Digite observações, se houver..."></textarea>
+                    </div>
+                    <div style="margin: 10px 0 0 0;">
+                        <label for="total_volumes"><strong>Total de Volumes:</strong></label>
+                        <input type="number" id="total_volumes" name="total_volumes" value="0" readonly style="background: #f3f3f8; font-weight: bold; color: #1a2a5a;">
+                    </div>
+                    <div class="botoes-actions">
+                        <button type="button" class="btn-enviar" onclick="window.print()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" style="vertical-align: middle; margin-right: 6px;" viewBox="0 0 16 16">
+                                <path d="M15.854 7.646a.5.5 0 0 1 0 .708l-4.5 4.5a.5.5 0 0 1-.708-.708L14.293 8H1.5a.5.5 0 0 1 0-1h12.793l-3.647-3.646a.5.5 0 0 1 .708-.708l4.5 4.5z"/>
+                            </svg>
+                            Imprimir
+                        </button>
+                    </div>
+            </div>
+            <div style="text-align: center; margin-top: 20px; font-size: 0.9rem; color: #555;">
+                &copy; 2025 Desenvolvido por Williams Rodrigues para Solution Logística.
+            </div>
+            </form>
+        </div>
+    </main>
+    <script>
+        let binIndex = 1;
+        function addBin() {
+            const tbody = document.querySelector('#bins-table tbody');
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>
+                    <input type="text" name="bins[${binIndex}][codigo]" placeholder="Código do BIN" required>
+                </td>
+                <td>
+                    <input type="number" name="bins[${binIndex}][quantidade]" placeholder="Qtd" min="1" required>
+                </td>
+                <td>
+                    <button type="button" class="remove-bin-btn" onclick="removeBin(this)">✖</button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+            binIndex++;
+            atualizarTotalVolumes();
+        }
+        function removeBin(btn) {
+            btn.closest('tr').remove();
+            atualizarTotalVolumes();
+        }
+        function atualizarTotalVolumes() {
+            const quantidadeInputs = document.querySelectorAll('input[name^="bins"][name$="[quantidade]"]');
+            let total = 0;
+            quantidadeInputs.forEach(input => {
+                const valor = parseInt(input.value, 10);
+                if (!isNaN(valor)) {
+                    total += valor;
+                }
+            });
+            document.getElementById('total_volumes').value = total;
+        }
+        document.addEventListener('input', function (event) {
+            if (event.target && event.target.name && event.target.name.match(/^bins\[\d+\]\[quantidade\]$/)) {
+                atualizarTotalVolumes();
+            }
+        });
+        window.addEventListener('DOMContentLoaded', atualizarTotalVolumes);
+    </script>
+</body>
+</html>

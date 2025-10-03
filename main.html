@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌏 Página Inicial Aplicação</title>
+        
+  </head>
+<body>
+        
+
+<style>
+    body {
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        font-size: 20px;
+        font-family: Arial, sans-serif;
+        background-color: #0948c5;
+        margin: 0;
+        padding: 20px;
+        background: url('https://c5gwmsmjx1.execute-api.us-east-1.amazonaws.com/prod/dados_processo_seletivo/foto_header_mobile/175474/Sem%20t%C3%ADtulo%20-%20Copia.jpg')no-repeat top center fixed;
+    }
+    .btn-ocorrencia
+    {
+        background-color: #0948c5;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        align-items: upper-left;
+    }
+    .btn-ocorrencia:hover {
+        background-color: #ffee00;
+        color: black;
+        font-size: 30px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        animation: alternate 1s infinite;
+        
+    }
+
+    .btn-expedicao
+    {
+        background-color: #0948c5;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        align-items: upper-left;
+    }
+
+    .btn-expedicao:hover {
+        background-color: #ffee00;
+        color: black;
+        font-size: 30px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        animation: alternate 1s infinite;
+    }
+
+    .btn-sair
+    {
+        background-color: #0948c5;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        align-items: upper-left;
+    }
+
+    .btn-sair:hover {
+        background-color: #ffee00;
+        color: black;
+        font-size: 30px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        animation: alternate 1s infinite;
+        
+    }
+    h1 {
+        color: #0948c5;
+        text-align: center;
+        margin-top: 20%;
+        font-size: 36px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .img-container {
+        margin-bottom: 20px;
+        text-align: center;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 28px;
+            margin-top: 30%;
+        }
+
+    }
+    .footer {
+        text-align: center;
+        padding: 10px;
+        background-color: #0948c5;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        box-shadow: #0948c5 0px -2px 5px 0px inset;
+    }
+
+    .btn-ocorrencia:hover {
+        background-color: #ffee00;
+    }
+
+    footer {
+        text-align: center;
+        padding: 10px;
+        background-color: #0948c5;
+        color: white;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        box-shadow: #0948c5 0px -2px 5px 0px inset;
+        font-size: 14px;
+    }
+</style>
+    <main>
+    <div class="container"
+                style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+    <div class="img-container" style="text-align: center;">
+
+            <button class="btn-ocorrencia" class="bi-bi-list" onclick="window.location.href='/ocorrencia'">Ocorrências</button>
+            <button class="btn-expedicao" class="bi-bi-car" onclick="window.location.href='/expedicao'">Expedição</button>
+            <button class="btn-sair" onclick="window.location.href='/login'">Sair Sistema</button>
+        </div>
+        </div>
+</main>
+    <footer>
+        &copy; 2025 Williams Rodrigues.Todos os direitos reservados.
+    </footer>
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ocorrências Estoque</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color:  #03045e;
+        }
+        .cartao {
+            background: white;
+            padding: 24px 32px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            text-align: center;
+            min-width: 320px;
+            max-width: 400px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .menu {
+            margin-bottom: 20px;
+            text-align: left;
+            color: #eeeff1;
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            align-items: left;
+        }
+        h1 {
+            color: #03045e;
+            margin-bottom: 24px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .form-group {
+            margin-bottom: 18px;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #023e8a;
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        select, input[type="text"], input[type="file"] {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1.5px solid #00b4d8;
+            border-radius: 5px;
+            font-size: 16px;
+            background: #f1faff;
+            color: #03045e;
+            transition: border 0.2s;
+            box-sizing: border-box;
+        }
+        select:focus, input[type="text"]:focus, input[type="file"]:focus {
+            border-color: #0077b6;
+            outline: none;
+        }
+        .logo {
+            margin-bottom: 18px;
+            max-width: 100%;
+            height: auto;
+        }
+        .foto {
+            margin-top: 20px;
+        }
+        .foto img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px auto 0 auto;
+            border-radius: 6px;
+            border: 1px solid #00b4d8;
+        }
+        .usuario {
+            margin-top: 20px;
+        }
+        .botao {
+            margin-top: 20px;
+        }
+        @media (max-width: 600px) {
+            body {
+                height: auto;
+                min-height: 100vh;
+                padding: 16px;
+            }
+            .cartao {
+                padding: 16px 8px;
+                min-width: unset;
+                max-width: 100%;
+            }
+            h1 {
+                font-size: 18px;
+            }
+            label {
+                font-size: 15px;
+            }
+            select, input[type="text"], input[type="file"] {
+                font-size: 15px;
+                padding: 7px 8px;
+            }
+        }
+        .btn {
+            background-color: #0077b6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .btn:hover {
+            background-color: #005f87;  
+        }
+        .btn:active {
+            background-color: #004f6e;  
+        }
+        .btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .btn-voltar {
+            background-color: #97969b;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-left: 10px;
+            align-items: right;
+        }
+
+        .btn-voltar:hover {
+            background-color: #ebcb1a;  
+        }
+
+        .menu-sidebar {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: transparent;
+            box-shadow: #4d4d4e 0px 0px 5px 0px inset;
+        }
+
+        .btn-expedicao {
+            background-color: #97969b;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-left: 10px;
+            align-items: left;
+        }
+
+        .btn-expedicao:hover {
+            background-color: #ebcb1a;  
+        }
+
+    </style>
+</head>
+   
+<body>
+
+    <main>
+        
+        <div class ="menu-sidebar" type="button">
+                <button class="btn-voltar" type="button" onclick="window.location.href='/main'">Voltar</button>
+        </div>
+    </main>
+    
+</body>
+
+    <form class="cartao" id="cartao" method="POST" enctype="multipart/form-data">
+        <img class="logo" src="https://solutionlog.vagas.solides.com.br/_next/image?url=https%3A%2F%2Fc5gwmsmjx1.execute-api.us-east-1.amazonaws.com%2Fprod%2Fdados_processo_seletivo%2Flogo_empresa%2F175474%2FSolutionLog_Marca_01%20-%20Copia.png&w=828&q=100'" alt="Logo" width="200">
+        <h1>Bem-vindo ao Controle de Ocorrências de Estoque</h1>
+                
+        <div class="form-group">
+            <label for="ocorrencia">Selecione uma Ocorrência:</label>
+            <select id="ocorrencia" name="ocorrencia">
+                <option value="">Selecione uma ação</option>
+                <option value="Descolando ID Palete Nº 01">Ocorrência Nº 01 (Etiqueta ID Palete Descolando - Leve)</option>
+                <option value="idpaleteetiqueta">Ocorrência Nº 02 (Etiqueta ID Palete não Retirada Leve)</option>
+                <option value="semetiqueta">Ocorrência Nº 03 (Etiqueta descolando ou sem etiqueta - Leve)</option>
+                <option value="local_sujo">Ocorrência Nº 04 (Ambiente Sujo - Média)</option>
+                <option value="avaria_cx">Ocorrência Nº 05 (Caixa Avariada no Palete - Média)</option>
+                <option value="montagem_palete">Ocorrência Nº 06 (Montagem do Palete não está de acordo - Leve)</option>
+                <option value="palete_quebrado">Ocorrência Nº 07 (Palete Quebrado - Média)</option>
+                <option value="sem_saldo">Ocorrência Nº 08 (Quantidade Físico não está de acordo com o saldo - Grave)</option>
+                <option value="nao_esta_de_acordo">Ocorrência Nº 09 (Produto Físico não está de acordo com o armazenado - Grave)</option>
+                <option value="posicao_vazia">Ocorrência Nº 10 (Posição Fisicamente vazia, porém com produtos armazenado - Grave)</option>
+                <option value="blocado">Ocorrência Nº 11 (Produtos Armazenados no BLOCADO - Grave)</option>
+                <option value="sem_iluminacao">Ocorrência Nº 12 (Ambiente Sem iluminação - Grave)</option>
+            </select>
+        </div>
+
+        <div class="form-group datahora">
+            <label for="data-hora">Data e Hora:</label>
+            <input type="text" id="data-hora" name="data-hora" readonly>
+        </div>
+
+        <div class="form-group posicao" id="codigobarra">
+            <label for="barcode">Escaneie o Código de Barras da Posição:</label>
+            <input 
+                type="text" 
+                id="barcode" 
+                name="barcode" 
+                placeholder="Use o leitor ou a câmera para escanear"
+                inputmode="barcode"
+                autocomplete="off"
+                autofocus
+            >
+        </div>
+
+        <div class="form-group foto" id="foto">
+            <label for="foto_ocorrencia">Insira a Foto da Ocorrência:</label>
+            <input type="file" id="foto_ocorrencia" name="foto_ocorrencia" accept="image/*" capture="environment">
+            <img id="preview" src="#" alt="Prévia da imagem" style="display:none;" />
+        </div>
+
+        <div class="form-group usuario" id="usuario">
+            <label for="usuario">Usuário:</label>
+            <input type="text" id="usuario" name="usuario" placeholder="Digite o Nome do Usuário">
+        </div>
+
+        <div class="botao">
+            <button class="btn" type="submit" id="registrar">Registrar Ocorrência</button>
+        </div>
+    </form>
+
+    <script>
+        // Atualiza campo de data/hora
+        document.getElementById('data-hora').value = new Date().toLocaleString('pt-BR');
+
+        // Pré-visualização da imagem selecionada
+        document.getElementById('foto_ocorrencia').addEventListener('change', function(event) {
+            const preview = document.getElementById('preview');
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = '#';
+                preview.style.display = 'none';
+            }
+        });
+    </script>
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/static/service-worker.js');
+      }
+
+      self.addEventListener('install', function(e) {
+  e.waitUntil(
+    caches.open('app').then(function(cache) {
+      return cache.addAll([
+        '/',
+      ]);
+    })
+  );
+});
+self.addEventListener('fetch', function(e) {
+  e.respondWith(
+    caches.match(e.request).then(function(response) {
+      return response || fetch(e.request);
+    })
+  );
+});
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔏 Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #03045e, #0077b6, #00b4d8, #90e0ef);
+            padding-top: 60px; /* Espaço para o cabeçalho */
+        }
+
+        .topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: rgb(5, 9, 58);
+            box-shadow: 0 2px 8px rgba(235, 232, 103, 0.527);
+            display: flex;
+            align-items: center;
+            padding-left: 32px;
+            z-index: 1000;
+        }
+        .topbar-title {
+            color: #03045e;
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .topbar-logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .cartao {
+            background: white;
+            padding: 24px 32px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            text-align: center;
+            min-width: 320px;
+            max-width: 400px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .menu {
+            margin-bottom: 20px;
+            text-align: left;
+            color: #eeeff1;
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            align-items: left;
+        }
+        h1 {
+            color: #03045e;
+            margin-bottom: 24px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .form-group {
+            margin-bottom: 18px;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #023e8a;
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        input[type="text"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        textarea {
+            resize: vertical;
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15
+        }
+        .btn-logofor {
+            background-color: #ff0000;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-left: 10px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .topbar-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffffff;
+            align-items: center;
+        }
+        
+        .btn-entrar {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+    </style>
+    
+</head>
+<body>
+    
+<div class="topbar">
+    <span class="topbar-title">Tela de Login e Senha</span>
+</div>
+
+</body>
+
+    <form class="cartao" id="cartao" method="POST" enctype="multipart/form-data">
+        <img class="logo" src="https://solutionlog.vagas.solides.com.br/_next/image?url=https%3A%2F%2Fc5gwmsmjx1.execute-api.us-east-1.amazonaws.com%2Fprod%2Fdados_processo_seletivo%2Flogo_empresa%2F175474%2FSolutionLog_Marca_01%20-%20Copia.png&w=828&q=100'" alt="Logo" width="200">
+        <h1>Faça o seu login e senha para entrar</h1>
+        <div class="form-group">
+            <label for="nome">Usuário:</label>
+            <input type="text" id="nome" name="nome" required>
+        </div>
+        <div class="form-group">
+            <label for="senha">Senha:</label>
+            <input type="text" id="text" name="senha" required>
+        </div>
+
+        <button type="submit" class="btn-entrar">Entrar</button>
+        <button type="submit" class="btn-logofor" onclick="window.location.href='/'">Abandonar</button>
+    </form>
+
+
+<script>
+    // Fazer com que o fundo da tela fique mudando de cor gradiente como ondas do mar
+
+    const colors = [
+        '#03045e', '#0077b6', '#00b4d8', '#90e0ef', 
+        '#caf0f8', '#ade8f4', '#48cae4', '#0096c7'
+    ];
+
+    let currentIndex = 0;
+
+    setInterval(() => {
+        document.body.style.background = `linear-gradient(135deg, ${colors[currentIndex]}, ${colors[(currentIndex + 1) % colors.length]})`;
+        currentIndex = (currentIndex + 1) % colors.length;
+    }, 5000);
+
+</script>
+</body>
+</html>
